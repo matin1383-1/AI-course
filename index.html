@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artificial Intelligence Course - Shiraz University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --background-color: #f8f9fa;
+            --success-color: #2ecc71;
+            --warning-color: #f1c40f;
+            --danger-color: #e74c3c;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            scroll-behavior: smooth;
+        }
+        
+        .nav-menu {
+            background: var(--primary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-menu ul {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .course-info {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .course-section {
+            margin: 4rem 0;
+        }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .objective-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .objective-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .objective-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .schedule-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .week-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .schedule-card h3 {
+            margin: 1rem;
+            color: var(--accent-color);
+        }
+
+        .schedule-card ul {
+            list-style-type: none;
+            padding: 1rem;
+        }
+
+        .schedule-card li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .schedule-card li:before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .grading-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .grading-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .grading-percentage {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .grading-label {
+            margin-top: 1rem;
+            color: var(--primary-color);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .grading-container,
+            .resources-grid,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Artificial Intelligence</h1>
+        <p>Department of Mathematics and CS - Shiraz University</p>
+        <p>Spring 2025</p>
+    </header>
+
+    <div class="container">
+        <section class="course-info">
+            <h2>Course Overview</h2>
+            <p>Welcome to the Artificial Intelligence course at Shiraz University. This course provides a comprehensive introduction to the fundamental concepts and modern applications of AI.</p>
+        </section>
+
+        <section class="highlights">
+            <div class="highlight-card">
+                <h3>Course Details</h3>
+                <ul>
+                    <li>Semester: Spring 2025</li>
+                    <li>Teacher : Dr.Alireza Kazemi</li>
+                </ul>
+            </div>
+            <div class="highlight-card">
+                <h3>Prerequisites</h3>
+                <ul>
+                    <li>Programming Fundamentals and Data Structure</li>
+                    <li>good to be familiar with Algorithm Design</li>
+                </ul>
+            </div>
+
+            <div class="highlight-card">
+                <h3>Classes</h3>
+                <ul>
+                    <li>Sunday , Tuesday , 11 - 12.5 </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="objectives" class="course-section">
+            <h2>Learning Objectives</h2>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Theoretical Understanding</h3>
+                    <p>Understand fundamental AI concepts, algorithms, and their theoretical foundations</p>
+                </div>
+                <div class="objective-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Practical Skills</h3>
+                    <p>Implement AI algorithms and develop solutions to real-world problems</p>
+                </div>
+                <div class="objective-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Problem Solving</h3>
+                    <p>Analyze complex problems and design appropriate AI-based solutions</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="schedule" class="course-section">
+            <h2>Course Schedule</h2>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <h3>Foundations & Search</h3>
+                    <ul>
+                        <li>Introduction to AI</li>
+                        <li>Intelligent Agents</li>
+                        <li>Uninformed Search</li>
+                        <li>Informed Search</li>
+                        <li>Adversarial Search</li>
+                        <li>Constraint Satisfaction Problems</li>
+                    </ul>
+                </div>
+                <div class="schedule-card">
+                    <h3>Knowledge & Logic</h3>
+                    <ul>
+                        <li>Knowledge Representation</li>
+                        <li>Propositional Logic</li>
+                        <li>First-Order Logic</li>
+                        <li>Planning</li>
+                    </ul>
+                </div>
+                <div class="schedule-card">
+                    <h3>Uncertainty</h3>
+                    <ul>
+                        <li>Probability Theory</li>
+                        <li>Bayesian Networks</li>
+                        <li>Decision Theory</li>
+                    </ul>
+                </div>
+                <div class="schedule-card">
+                    <h3>Learning</h3>
+                    <ul>
+                        <li>Machine Learning Basics</li>
+                        <li>Neural Networks</li>
+                        <li>Deep Learning</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="grading" class="course-section">
+            <h2>Grading Policy</h2>
+            <div class="grading-container">
+                <div class="grading-item">
+                    <div class="grading-percentage">40%</div>
+                    <div class="grading-label">Final Exam</div>
+                </div>
+                <div class="grading-item">
+                    <div class="grading-percentage">35%</div>
+                    <div class="grading-label">Midterm Exam</div>
+                </div>
+                <div class="grading-item">
+                    <div class="grading-percentage">25%</div>
+                    <div class="grading-label">Projects & Assignments</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resources" class="resources course-section">
+            <h2>Course Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Main Textbook</h3>
+                    <p>Artificial Intelligence: A Modern Approach by Stuart Russell and Peter Norvig</p>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <h3>Course Materials</h3>
+                    <p>Weekly slides, lecture notes, and supplementary readings</p>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Programming</h3>
+                    <p>Programming assignments and project materials</p>
+                </div>
+                <div class="resource-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Online Resources</h3>
+                    <p>Recorded lectures and additional learning materials</p>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+    <footer>
+        <p>&copy; 2025 Department of Mathematics, Shiraz University. All rights reserved.</p>
+    </footer>
+</body>
+</html>
