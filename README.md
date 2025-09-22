@@ -1,6 +1,5 @@
 # Artificial Intelligence Course - Shiraz University
 
-![Shiraz University](https://upload.wikimedia.org/wikipedia/en/thumb/3/3d/Shiraz_University_logo.svg/150px-Shiraz_University_logo.svg.png)
 
 ## Course Overview
 This repository contains materials for the Artificial Intelligence course offered at the Department of Mathematics, Shiraz University, during Spring 2025.
