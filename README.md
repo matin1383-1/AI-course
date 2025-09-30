@@ -26,9 +26,9 @@ A comprehensive introduction to the fundamental concepts and modern applications
 - **Lab Sessions**: Weekly programming sessions
 
 ## 📊 Assessment
-- Final Exam (40%)
+- Final Exam (35%)
 - Midterm Exam (35%)
-- Projects & Assignments (25%)
+- Projects & Assignments (30%)
 
 ## 📚 Learning Resources
 
