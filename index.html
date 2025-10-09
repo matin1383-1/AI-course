@@ -40,6 +40,7 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .nav-menu a {
@@ -248,6 +249,97 @@
             margin-bottom: 1rem;
         }
 
+        .homework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .homework-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .homework-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .homework-due {
+            background: var(--warning-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .download-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .download-card i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            background: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background: var(--primary-color);
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .file-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .file-list li:last-child {
+            border-bottom: none;
+        }
+
         footer {
             background: var(--primary-color);
             color: white;
@@ -279,8 +371,18 @@
     <header>
         <h1>Artificial Intelligence</h1>
         <p>Department of Mathematics and CS - Shiraz University</p>
-        <p>Spring 2025</p>
+        <p>Fall 2025</p>
     </header>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="#objectives">Objectives</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#grading">Grading</a></li>
+            <li><a href="#homework">Homework</a></li>
+            <li><a href="#downloads">Downloads</a></li>
+        </ul>
+    </nav>
 
     <div class="container">
         <section class="course-info">
@@ -308,6 +410,7 @@
                 <h3>Classes</h3>
                 <ul>
                     <li>Sunday , Tuesday , 11 - 12.5 </li>
+                    <li>Wednesday , 12.5 - 2</li>
                 </ul>
             </div>
         </section>
@@ -393,32 +496,77 @@
             </div>
         </section>
 
-        <section id="resources" class="resources course-section">
-            <h2>Course Resources</h2>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <i class="fas fa-book"></i>
-                    <h3>Main Textbook</h3>
-                    <p>Artificial Intelligence: A Modern Approach by Stuart Russell and Peter Norvig</p>
+
+        <section id="homework" class="course-section">
+            <h2>Homework & Assignments</h2>
+            <div class="homework-grid">
+                <div class="homework-card">
+                    <h3>Assignment 1: Agents and Environments</h3>
+                    <p>determing the agents PEAS characteristics (espically the performance measure) and environment characteristics like static or dynamic, deterministic or stochastic, discrete or continuous, single agent or multi agent, and fully observable or partially observable</p>
+                    <ul>
+                        <li>submit in pdf format</li>
+                        <li>send in telegram</li>
+                    </ul>
+                    <div style="margin: 1rem 0;">
+                        <a href="TextBooks/HW1.pdf" class="download-btn">Assignment</a>
+                    </div>
+                    <div class="homework-due">Due: 24 mehr</div>
                 </div>
-                <div class="resource-card">
-                    <i class="fas fa-file-powerpoint"></i>
-                    <h3>Course Materials</h3>
-                    <p>Weekly slides, lecture notes, and supplementary readings</p>
+                <div class="homework-card">
+                    <h3>Assignment 2</h3>
                 </div>
-                <div class="resource-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Programming</h3>
-                    <p>Programming assignments and project materials</p>
+                <div class="homework-card">
+                    <h3>Assignment 3 </h3>
                 </div>
-                <div class="resource-card">
-                    <i class="fas fa-video"></i>
-                    <h3>Online Resources</h3>
-                    <p>Recorded lectures and additional learning materials</p>
+                <div class="homework-card">
+                    <h3>Final Project</h3>
                 </div>
             </div>
         </section>
 
+        <section id="downloads" class="course-section">
+            <h2>Course Materials & Downloads</h2>
+            <div class="download-grid">
+                <div class="download-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Textbooks</h3>
+                    <p>Download course textbooks and reference materials</p>
+                    <ul class="file-list">
+                        <li>AI: A Modern Approach (3rd Ed.) <a href="TextBooks/Artificial Intelligence A Modern Approach, 3rd Edition by Stuart J. Russell, Peter Norvig.pdf" class="download-btn" download>Download</a></li>
+                        <li>AI Structures & Strategies <a href="TextBooks/artificial intelligence structures and strategies for  complex problem solving.pdf" class="download-btn" download>Download</a></li>
+                        <li>AI Guide to Intelligent Systems <a href="TextBooks/Artificial_Intelligence-A_Guide_to_Intelligent_Systems.pdf" class="download-btn" download>Download</a></li>
+                    </ul>
+                </div>
+                <div class="download-card">
+                    <i class="fas fa-file-powerpoint"></i>
+                    <h3>Lecture Slides</h3>
+                    <p>Download weekly lecture presentations</p>
+                    <ul class="file-list">
+                    </ul>
+                </div>
+                <div class="download-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Hand written notes</h3>
+                    <p>Download programming examples and templates</p>
+                    <ul class="file-list">
+                        <li>chapter 1<a href="TextBooks/Ch1-summary.pdf" class="download-btn" download>Download</a></li>
+                        <li>chapter 2<a href="TextBooks/Ch2-summary.pdf" class="download-btn" download>Download</a></li>
+                    </ul>
+                </div>
+                <div class="download-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>Additional Resources</h3>
+                    <p>Supplementary materials and references</p>
+                    <ul class="file-list">
+                        <li>PROLOG Tutorial <a href="TextBooks/PROLOG.pdf" class="download-btn" download>Download</a></li>
+                        <li>Final Exam Papers <a href="TextBooks/final1.pdf" class="download-btn" download>Download</a></li>
+                        <li>Final Exam Papers <a href="TextBooks/final2.pdf" class="download-btn" download>Download</a></li>
+                        <li>Final Exam Papers <a href="TextBooks/final3.pdf" class="download-btn" download>Download</a></li>
+                        <li>Practice Problems <a href="TextBooks/rest.pdf" class="download-btn" download>Download</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
     </div>
     <footer>
