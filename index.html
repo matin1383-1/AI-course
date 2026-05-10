@@ -6,363 +6,585 @@
     <title>Artificial Intelligence Course - Shiraz University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --background-color: #f8f9fa;
-            --success-color: #2ecc71;
-            --warning-color: #f1c40f;
-            --danger-color: #e74c3c;
+            --ink: #18211f;
+            --muted: #65716f;
+            --paper: #fffaf0;
+            --panel: rgba(255, 255, 255, 0.84);
+            --panel-strong: #ffffff;
+            --line: rgba(24, 33, 31, 0.12);
+            --forest: #153d35;
+            --teal: #0d8b8b;
+            --amber: #f4b740;
+            --coral: #ef6f5e;
+            --mint: #d7f2df;
+            --shadow: 0 24px 60px rgba(20, 51, 46, 0.14);
+            --radius: 24px;
         }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
-        
-        .nav-menu {
-            background: var(--primary-color);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
 
-        .nav-menu ul {
-            max-width: 1000px;
-            margin: 0 auto;
+        body {
+            font-family: 'Source Serif 4', Georgia, serif;
+            color: var(--ink);
+            line-height: 1.7;
+            margin: 0;
             padding: 0;
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+            background:
+                radial-gradient(circle at 8% 12%, rgba(244, 183, 64, 0.22), transparent 28rem),
+                radial-gradient(circle at 90% 4%, rgba(13, 139, 139, 0.18), transparent 24rem),
+                linear-gradient(135deg, #fffaf0 0%, #f3efe2 48%, #e9f4ef 100%);
+            min-height: 100vh;
         }
 
-        .nav-menu a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(24, 33, 31, 0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(24, 33, 31, 0.035) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+            z-index: -1;
         }
 
-        .nav-menu a:hover {
-            background-color: rgba(255,255,255,0.1);
+        h1,
+        h2,
+        h3,
+        .nav-menu a,
+        .download-btn,
+        .grading-percentage,
+        .homework-due {
+            font-family: 'Space Grotesk', 'Trebuchet MS', sans-serif;
+        }
+
+        a {
+            color: inherit;
         }
 
         header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            padding: 5.5rem 2rem 6rem;
             text-align: center;
+            background:
+                linear-gradient(135deg, rgba(21, 61, 53, 0.96), rgba(11, 88, 86, 0.9)),
+                radial-gradient(circle at 75% 20%, rgba(244, 183, 64, 0.48), transparent 20rem);
+            isolation: isolate;
+        }
+
+        header::before,
+        header::after {
+            content: "";
+            position: absolute;
+            border-radius: 999px;
+            z-index: -1;
+        }
+
+        header::before {
+            width: 26rem;
+            height: 26rem;
+            right: -9rem;
+            top: -8rem;
+            background: rgba(244, 183, 64, 0.26);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+        }
+
+        header::after {
+            width: 18rem;
+            height: 18rem;
+            left: -6rem;
+            bottom: -9rem;
+            background: rgba(215, 242, 223, 0.16);
+        }
+
+        header h1 {
+            margin: 0 auto 1rem;
+            max-width: 920px;
+            font-size: clamp(3rem, 8vw, 6.7rem);
+            line-height: 0.92;
+            letter-spacing: -0.07em;
+        }
+
+        header p {
+            max-width: 720px;
+            margin: 0.35rem auto;
+            color: rgba(255, 255, 255, 0.82);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+        }
+
+        header p:last-child {
+            display: inline-flex;
+            margin-top: 1.25rem;
+            padding: 0.45rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            color: #fff;
+        }
+
+        .nav-menu {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            margin-top: -2.25rem;
+            padding: 0 1rem;
+            background: transparent;
+        }
+
+        .nav-menu ul {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0.65rem;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.78);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(18px);
+        }
+
+        .nav-menu a {
+            display: inline-flex;
+            color: var(--forest);
+            text-decoration: none;
+            padding: 0.65rem 1rem;
+            border-radius: 999px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #fff;
+            background: var(--forest);
+            transform: translateY(-2px);
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1120px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3.5rem 1.25rem 2rem;
+        }
+
+        .course-info,
+        .highlight-card,
+        .objective-card,
+        .schedule-card,
+        .grading-item,
+        .resource-card,
+        .contact-card,
+        .homework-card,
+        .download-card {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius);
+            box-shadow: 0 16px 40px rgba(20, 51, 46, 0.09);
+            backdrop-filter: blur(14px);
         }
 
         .course-info {
-            background: white;
-            border-radius: 10px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            padding-right: min(34vw, 18rem);
+            margin: 0 0 2rem;
         }
 
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
+        .course-info::after {
+            content: "AI";
+            position: absolute;
+            right: clamp(1rem, 5vw, 3rem);
+            bottom: clamp(0.75rem, 3vw, 2rem);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(6rem, 18vw, 13rem);
+            font-weight: 700;
+            line-height: 0.8;
+            letter-spacing: -0.12em;
+            color: rgba(13, 139, 139, 0.11);
         }
 
         h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .highlight-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .course-section {
-            margin: 4rem 0;
-        }
-
-        .objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .objective-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .objective-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .objective-card i {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .schedule-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .schedule-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .week-header {
-            background: var(--primary-color);
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .schedule-card h3 {
-            margin: 1rem;
-            color: var(--accent-color);
-        }
-
-        .schedule-card ul {
-            list-style-type: none;
-            padding: 1rem;
-        }
-
-        .schedule-card li {
-            margin: 0.5rem 0;
-            padding-left: 1.5rem;
             position: relative;
+            margin: 0 0 1rem;
+            color: var(--forest);
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1;
+            letter-spacing: -0.055em;
         }
 
-        .schedule-card li:before {
-            content: "•";
-            color: var(--accent-color);
-            position: absolute;
-            left: 0;
+        h2::after {
+            content: "";
+            display: block;
+            width: 4.5rem;
+            height: 0.35rem;
+            margin-top: 0.9rem;
+            border-radius: 999px;
+            background: linear-gradient(90deg, var(--amber), var(--teal));
         }
 
-        .grading-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+        h3 {
+            margin-top: 0;
+            color: var(--forest);
+            line-height: 1.15;
+            letter-spacing: -0.035em;
         }
 
-        .grading-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .grading-percentage {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-
-        .grading-label {
-            margin-top: 1rem;
-            color: var(--primary-color);
-        }
-
-        .resources-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .resource-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .resource-card i {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .contact-card i {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-        }
-
-        .homework-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .homework-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .homework-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .homework-due {
-            background: var(--warning-color);
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-
+        .highlights,
+        .objectives-grid,
+        .schedule-grid,
+        .grading-container,
+        .resources-grid,
+        .contact-container,
+        .homework-grid,
         .download-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            gap: 1.25rem;
+            margin-top: 1.5rem;
         }
 
+        .highlight-card,
+        .objective-card,
+        .grading-item,
+        .resource-card,
+        .contact-card,
         .download-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
+            padding: 1.5rem;
         }
 
-        .download-card:hover {
-            transform: translateY(-5px);
+        .highlight-card {
+            position: relative;
+            overflow: hidden;
         }
 
-        .download-card i {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 1rem;
+        .highlight-card::before {
+            content: "";
+            position: absolute;
+            width: 5rem;
+            height: 5rem;
+            top: -2.5rem;
+            right: -1.5rem;
+            border-radius: 50%;
+            background: rgba(244, 183, 64, 0.25);
         }
 
-        .download-btn {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
-            transition: background-color 0.3s;
-        }
-
-        .download-btn:hover {
-            background: var(--primary-color);
-        }
-
+        .highlight-card ul,
+        .schedule-card ul,
+        .homework-card ul,
         .file-list {
             list-style: none;
             padding: 0;
+            margin: 1rem 0 0;
+        }
+
+        .highlight-card li,
+        .schedule-card li,
+        .homework-card li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin: 0.55rem 0;
+            color: var(--muted);
+        }
+
+        .highlight-card li::before,
+        .schedule-card li::before,
+        .homework-card li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.75em;
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            background: var(--teal);
+        }
+
+        .course-section {
+            margin: clamp(3rem, 8vw, 5.5rem) 0;
+            scroll-margin-top: 7rem;
+        }
+
+        .objective-card,
+        .resource-card,
+        .download-card,
+        .grading-item {
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .objective-card:hover,
+        .resource-card:hover,
+        .download-card:hover,
+        .grading-item:hover,
+        .homework-card:hover,
+        .schedule-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 24px 58px rgba(20, 51, 46, 0.15);
+            border-color: rgba(13, 139, 139, 0.28);
+        }
+
+        .objective-card i,
+        .resource-card i,
+        .download-card i,
+        .contact-card i {
+            display: inline-grid;
+            place-items: center;
+            width: 4rem;
+            height: 4rem;
+            margin-bottom: 1rem;
+            color: var(--forest);
+            background: linear-gradient(135deg, var(--mint), rgba(244, 183, 64, 0.35));
+            border-radius: 1.25rem;
+            font-size: 1.8rem;
+        }
+
+        .schedule-card {
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .schedule-card h3 {
+            margin: 0;
+            padding: 1.25rem 1.25rem 0;
+        }
+
+        .schedule-card ul {
+            padding: 0 1.25rem 1.35rem;
+        }
+
+        .schedule-card:nth-child(1) { border-top: 6px solid var(--teal); }
+        .schedule-card:nth-child(2) { border-top: 6px solid var(--amber); }
+        .schedule-card:nth-child(3) { border-top: 6px solid var(--coral); }
+        .schedule-card:nth-child(4) { border-top: 6px solid var(--forest); }
+
+        .week-header {
+            background: var(--forest);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .grading-item {
+            position: relative;
+            overflow: hidden;
+            min-height: 12rem;
+            display: grid;
+            place-items: center;
+        }
+
+        .grading-item::before {
+            content: "";
+            position: absolute;
+            inset: 1rem;
+            border: 1px dashed rgba(13, 139, 139, 0.3);
+            border-radius: 18px;
+        }
+
+        .grading-percentage {
+            position: relative;
+            font-size: clamp(3rem, 8vw, 4.7rem);
+            font-weight: 700;
+            color: var(--teal);
+            line-height: 0.9;
+            letter-spacing: -0.08em;
+        }
+
+        .grading-label {
+            position: relative;
+            margin-top: 0.5rem;
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .homework-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .homework-card {
+            position: relative;
+            overflow: hidden;
+            padding: 1.5rem;
+            border-left: 0;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .homework-card::before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 0.45rem;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, var(--coral), var(--amber), var(--teal));
+        }
+
+        .homework-card p,
+        .download-card p,
+        .objective-card p,
+        .course-info p {
+            color: var(--muted);
+        }
+
+        .homework-due {
+            background: rgba(244, 183, 64, 0.22);
+            color: #6d4700;
+            padding: 0.55rem 0.9rem;
+            border: 1px solid rgba(244, 183, 64, 0.45);
+            border-radius: 999px;
+            font-weight: 700;
+            display: inline-block;
             margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .download-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .download-card {
+            text-align: left;
+        }
+
+        .download-card > i {
+            margin-right: auto;
+        }
+
+        .download-btn {
+            background: var(--forest);
+            color: white;
+            padding: 0.72rem 1rem;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            margin-top: 1rem;
+            font-size: 0.88rem;
+            font-weight: 700;
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .download-btn:hover {
+            background: var(--teal);
+            box-shadow: 0 12px 24px rgba(13, 139, 139, 0.22);
+            transform: translateY(-2px);
+        }
+
+        .file-list {
+            margin-top: 1rem;
+            border-top: 1px solid var(--line);
         }
 
         .file-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid var(--line);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            color: var(--muted);
         }
 
         .file-list li:last-child {
             border-bottom: none;
         }
 
+        .file-list .download-btn {
+            margin-top: 0;
+            flex: 0 0 auto;
+        }
+
         footer {
-            background: var(--primary-color);
-            color: white;
+            color: rgba(255, 255, 255, 0.78);
             text-align: center;
-            padding: 1rem;
+            padding: 2.5rem 1rem;
             margin-top: 4rem;
+            background: linear-gradient(135deg, var(--forest), #0b5755);
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .course-info,
+            .highlight-card,
+            .course-section {
+                animation: rise-in 0.7s ease both;
+            }
+
+            .highlight-card:nth-child(2) { animation-delay: 0.08s; }
+            .highlight-card:nth-child(3) { animation-delay: 0.16s; }
+
+            @keyframes rise-in {
+                from {
+                    opacity: 0;
+                    transform: translateY(18px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
         }
 
         @media (max-width: 768px) {
+            header {
+                padding: 4rem 1rem 5rem;
+            }
+
+            .nav-menu {
+                margin-top: -1.75rem;
+            }
+
             .nav-menu ul {
-                flex-direction: column;
-                align-items: center;
-                padding: 0 1rem;
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                border-radius: 1.25rem;
+            }
+
+            .nav-menu a {
+                white-space: nowrap;
             }
 
             .container {
-                padding: 1rem;
+                padding: 2.25rem 1rem 1rem;
             }
 
-            .grading-container,
-            .resources-grid,
-            .contact-container {
-                grid-template-columns: 1fr;
+            .course-info {
+                padding-right: 1.5rem;
+                padding-bottom: 6rem;
+            }
+
+            .course-info::after {
+                left: 1.25rem;
+                right: auto;
+                font-size: 6rem;
+            }
+
+            .file-list li {
+                align-items: flex-start;
+                flex-direction: column;
             }
         }
     </style>
